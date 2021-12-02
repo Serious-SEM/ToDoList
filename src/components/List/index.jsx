@@ -1,9 +1,9 @@
 import React from "react";
 import Badge from "../Badge/index"
 import classNames from 'classnames';
-import './List.scss'
+import './List.scss';
 
-// import listSvg from '../assets/img/list.svg'
+import removeSvg from '../../assets/img/remove.svg';
 
 const List = ({items, isRemoveble, onClick}) => {
     return (
@@ -14,6 +14,7 @@ const List = ({items, isRemoveble, onClick}) => {
             {item.icon ? (item.icon) : (<Badge color={item.color} />)}
           </i>
           <span>{item.name}</span>
+          {isRemoveble && <img className='list-remove-icon' src={removeSvg} alt="Remove Icon" />}
         </li>
       )}
     

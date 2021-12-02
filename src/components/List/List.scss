@@ -1,4 +1,5 @@
 .list{
+  $self: &;
     margin-bottom: 30px;
 
     &_add-button{
@@ -8,6 +9,10 @@
             opacity: 1 ;
         }
     }
+
+    &-remove-icon{
+      opacity: 0;
+    }    
 
     li{
       display: flex;
@@ -29,6 +34,17 @@
         }        
       }
 
+      span{
+        flex: 1;
+      }
+
+      &:hover #{$self}-remove-icon{
+        opacity: 0.2;
+        &:hover{
+          opacity: 1;
+        }
+      }
+
       &:hover{
         background: #ffffff48;
       }  
@@ -39,4 +55,8 @@
         border-radius: 4px;
       }  
     } 
+
+    &-remove-icon:hover{
+      opacity: 1;
+    }
   }

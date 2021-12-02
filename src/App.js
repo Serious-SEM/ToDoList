@@ -15,7 +15,6 @@ function App() {
 
   const onAddList = (obj) => {
     const newLists = [...lists, obj]
-    console.log(newLists);
     addLists(newLists);
   }
 
@@ -32,9 +31,9 @@ function App() {
             active: true
           }
         ]}
-        isRemoveble/>
+        />
         <List 
-          items = {lists} />
+          items = {lists} isRemoveble/>
           <AddList onAdd={onAddList} colors={DB.colors} />
       </div>
       {/* <div className="todo_tasks"></div> */}

@@ -4,8 +4,6 @@ import Badge from './../Badge/index';
 import CloseSvg from "../../assets/img/close.svg"
 import "./AddList.scss"
 
-import DB from "../../assets/db.json"
-
 const AddList = ({colors, onAdd}) => {
     const [visiblePopup, setVisiblePopup] = React.useState(false)
     const [selectedColor, selectColor] = React.useState(colors[0].id)
@@ -40,7 +38,7 @@ const AddList = ({colors, onAdd}) => {
         {visiblePopup &&         
         (<div className="add-list-popup">
           <img src={CloseSvg} className="add-list-popup-close-btn" onClick={() => setVisiblePopup(false)} />
-          <input value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyDown={e => e.key === 'Enter' && addClass()} className="field" type="text" placeholder="Название папки" />
+          <input value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyDown={e => e.key === 'Enter' && (addClass(), setInputValue(''), setVisiblePopup(false))} className="field" type="text" placeholder="Название папки" />
           <div className="add-list-popup-colors">
             {
               colors.map(color => 
@@ -53,7 +51,7 @@ const AddList = ({colors, onAdd}) => {
             }
             
           </div>
-          <button className="button" onClick={() => (addClass(), setInputValue(''))}>Добавить</button>
+          <button className="button" onClick={() => (addClass(), setInputValue(''), setVisiblePopup(false))}>Добавить</button>
         </div>)}
       </div>
     )
