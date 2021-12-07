@@ -2,17 +2,27 @@ import React from 'react';
 import AddList from './components/AddList';
 import List from './components/List/index';
 import Tasks from './components/Tasks';
+import axios from 'axios'
 
 import DB from "./assets/db.json"
 
 function App() {
-  // const [state, setState] = React.useState()
+  const [colors, setColors] = React.useState(null)
   const [lists, setLists] = React.useState(
     DB.lists.map(item => {
       item.color = DB.colors.filter(color => item.colorId === color.id)[0].name
       return item
     })
   )
+
+  React.useEffect(() => {
+    axios.get('http://localhost:3001/lists?_expand=color').then(({data}) => {
+      console.log(data);
+    })
+    axios.get('http://localhost:3001/colors').then(({data}) => {
+      console.log(data);
+    })
+  }, [])
 
   const onAddList = (obj) => {
     const newLists = [...lists, obj]
