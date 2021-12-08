@@ -1,9 +1,9 @@
 import React from 'react';
+import axios from 'axios'
+
 import AddList from './components/AddList';
 import List from './components/List/index';
 import Tasks from './components/Tasks';
-import axios from 'axios'
-
 import DB from "./assets/db.json"
 
 function App() {

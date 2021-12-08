@@ -1,4 +1,6 @@
 import React from "react";
+import axios from 'axios'
+
 import List from "../List/index";
 import Badge from './../Badge/index';
 import CloseSvg from "../../assets/img/close.svg"
@@ -15,8 +17,11 @@ const AddList = ({colors, onAdd}) => {
         return;
       } 
 
-      const color = colors.filter(c => c.id === selectedColor)[0].name
-      onAdd({id: Math.random(), name: inputValue, colorId: selectedColor, color})
+      axios.post('http://localhost:3001/lists', {name: inputValue, colorId: selectedColor}).then(({data}) => {
+        console.log(data);
+      })
+      // const color = colors.filter(c => c.id === selectedColor)[0].name
+      // onAdd({id: Math.random(), name: inputValue, colorId: selectedColor, color})
     }
 
     return (
